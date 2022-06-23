@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "hgc-indiekit",
+  "version": "0.1.0",
+  "description": "Indiekit server for hans.gerwitz.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerwitz/hgc-indiekit.git"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "main": "index.config.js",
+  "scripts": {
+    "start": "indiekit serve"
+  },
+  "dependencies": {
+    "@indiekit/indiekit": "^1.0.0-alpha.8",
+    "@indiekit/store-github": "^1.0.0-alpha.5",
+    "@indiekit/syndicator-twitter": "^1.0.0-alpha.5",
+    "yaml": "^2.0.0"
+  }
+}
