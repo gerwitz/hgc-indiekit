@@ -2,12 +2,12 @@ import {postTemplate } from "./post-template.js";
 
 export default = {
   application: {
-    url: "https://indiekit.gerwitz.com",
-    mongodbUrl: process.env.MONGO_URL,
+    url: "http://indiekit.gerwitz.com",
+    // mongodbUrl: process.env.MONGO_URL,
   },
   plugins: [
     "@indiekit/store-github",
-    "@indiekit/syndicator-twitter",
+    // "@indiekit/syndicator-twitter",
   ],
   publication: {
     me: "https://hans.gerwitz.com",
@@ -52,9 +52,9 @@ export default = {
     user: "gerwitz",
     repo: "hgc-v12"
   },
-  "@indiekit/syndicator-twitter": {
-    checked: true,
-    forced: false,
-    user: "gerwitz",
-  },
+  // "@indiekit/syndicator-twitter": {
+  //   checked: true,
+  //   forced: false,
+  //   user: "gerwitz",
+  // },
 };
