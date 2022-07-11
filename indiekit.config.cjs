@@ -1,6 +1,6 @@
-import {postTemplate } from "./post-template.js";
+import { postTemplate } from "./post-template.js";
 
-export default = {
+export default {
   application: {
     url: "http://indiekit.gerwitz.com",
     // mongodbUrl: process.env.MONGO_URL,
@@ -52,9 +52,9 @@ export default = {
     user: "gerwitz",
     repo: "hgc-v12"
   },
-  // "@indiekit/syndicator-twitter": {
-  //   checked: true,
-  //   forced: false,
-  //   user: "gerwitz",
-  // },
+  "@indiekit/syndicator-twitter": {
+    checked: true,
+    forced: false,
+    user: "gerwitz",
+  },
 };
