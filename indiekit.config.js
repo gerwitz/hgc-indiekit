@@ -2,7 +2,7 @@ import {postTemplate } from "./post-template.js";
 
 export default = {
   application: {
-    url: "https://indie.gerwitz.com",
+    url: "https://indiekit.gerwitz.com",
     mongodbUrl: process.env.MONGO_URL,
   },
   plugins: [
