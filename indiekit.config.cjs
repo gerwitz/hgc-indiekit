@@ -1,9 +1,9 @@
-import { postTemplate } from "./post-template.js";
+const postTemplate = require('./hgc-template.cjs');
 
-export default {
+module.exports = {
   application: {
     url: "http://indiekit.gerwitz.com",
-    // mongodbUrl: process.env.MONGO_URL,
+    mongodbUrl: process.env.MONGO_URL,
   },
   plugins: [
     "@indiekit/store-github",

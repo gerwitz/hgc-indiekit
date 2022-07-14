@@ -1,4 +1,7 @@
-export const articleTemplate = (properties) => {
+// import YAML from 'yaml'
+const YAML = require('yaml');
+
+module.exports = function(properties){
   let content;
   if (properties.content) {
     content =
@@ -11,11 +14,16 @@ export const articleTemplate = (properties) => {
   }
 
   metadata = {
-    (properties.postStatus === "draft" && { published: false }),
     date: properties.published,
     ...(properties.title && { title: properties.title }),
     ...(properties.category && { categories: properties.category }), // pluralized
   };
+  if (properties.postStatus === "draft") {
+    metadata.push({
+      published: false
+    })
+  }
+
   let frontMatter = YAML.stringify(metadata, { lineWidth: 0 });
   frontMatter = `---\n${frontMatter}---\n`;
 
