@@ -2,7 +2,7 @@ const postTemplate = require('./hgc-template.cjs');
 
 module.exports = {
   application: {
-    url: "http://indiekit.gerwitz.com",
+    url: "https://indiekit.gerwitz.com",
     mongodbUrl: process.env.MONGO_URL,
   },
   plugins: [
