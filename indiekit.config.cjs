@@ -2,8 +2,10 @@ const postTemplate = require('./hgc-template.cjs');
 
 module.exports = {
   application: {
+    name: "indiekit.gerwitz.com",
     url: "https://indiekit.gerwitz.com",
     mongodbUrl: process.env.MONGO_URL,
+    themeColor: "#00852B",
   },
   plugins: [
     "@indiekit/store-github",
