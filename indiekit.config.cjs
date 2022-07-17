@@ -1,4 +1,4 @@
-const postTemplate = require('./hgc-template.cjs');
+const hgcTemplate = require('./hgc-template.cjs');
 
 module.exports = {
   application: {
@@ -14,12 +14,10 @@ module.exports = {
   publication: {
     me: "https://hans.gerwitz.com",
     authorizationEndpoint: "https://indieauth.com/auth",
-    locale: "en",
+    locale: "en-US",
     timeZone: "Europe/Amsterdam",
     categories: ["personal", "culture", "work"],
-    slugSeparator: "-",
-    postTemplate: postTemplate,
-    postTypes:  [{
+    postTypes: [{
       type: "article",
       name: "Writing",
       post: {
@@ -48,7 +46,9 @@ module.exports = {
         path: "src/media/{yyyy}-{MM}/{originalname}",
         url: "media/{yyyy}-{MM}/{originalname}"
       }
-    }]
+    }],
+    slugSeparator: "-",
+    postTemplate: hgcTemplate,
   },
   "@indiekit/store-github": {
     user: "gerwitz",
