@@ -60,9 +60,9 @@ module.exports = {
   },
   "@indiekit/syndicator-mastodon": {
     checked: true,
-    forced: false,
+    forced: true,
     url: "https://social.gerwitz.com",
-    user: "gerwitz",
+    user: "hans",
     accessToken: process.env.MASTODON_ACCESS_TOKEN
   },
 };
