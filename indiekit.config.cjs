@@ -1,4 +1,5 @@
 const hgcTemplate = require('./hgc-template.cjs');
+const dotEnv = require('dotenv');
 
 module.exports = {
   application: {
@@ -9,7 +10,7 @@ module.exports = {
   },
   plugins: [
     "@indiekit/store-github",
-    // "@indiekit/syndicator-twitter",
+    "@indiekit/syndicator-mastodon",
   ],
   publication: {
     me: "https://hans.gerwitz.com",
@@ -50,13 +51,18 @@ module.exports = {
     slugSeparator: "-",
     postTemplate: hgcTemplate,
   },
+
   "@indiekit/store-github": {
     user: "gerwitz",
     repo: "hgc-v12"
+    branch: "main",
+    token: process.env.GITHUB_TOKEN
   },
-  "@indiekit/syndicator-twitter": {
+  "@indiekit/syndicator-mastodon": {
     checked: true,
     forced: false,
+    url: "https://social.gerwitz.com",
     user: "gerwitz",
+    accessToken: process.env.MASTODON_ACCESS_TOKEN
   },
 };
