@@ -54,7 +54,7 @@ module.exports = {
 
   "@indiekit/store-github": {
     user: "gerwitz",
-    repo: "hgc-v12"
+    repo: "hgc-v12",
     branch: "main",
     token: process.env.GITHUB_TOKEN
   },
