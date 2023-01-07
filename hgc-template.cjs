@@ -16,13 +16,10 @@ module.exports = function(properties){
   metadata = {
     date: properties.published,
     ...(properties.title && { title: properties.title }),
-    ...(properties.category && { categories: properties.category }), // pluralized
+    ...(properties.category && { categories: [properties.category] }), // pluralized
+    ...(properties.location && { location: properties.location }),
+    ...(properties.postStatus === "draft" && { draft: true }),
   };
-  if (properties.postStatus === "draft") {
-    metadata.push({
-      published: false
-    })
-  }
 
   let frontMatter = YAML.stringify(metadata, { lineWidth: 0 });
   frontMatter = `---\n${frontMatter}---\n`;

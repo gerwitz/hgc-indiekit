@@ -33,15 +33,15 @@ module.exports = {
       type: "note",
       name: "Note",
       post: {
-        path: "src/notes/{yyyy}/note-{t}.md",
-        url: "{yyyy}/{MM}/{dd}/note-{t}"
+        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
+        url: "{yyyy}/{MM}/{dd}/{slug}.html"
       }
     }, {
       type: "photo",
       name: "Photo Note",
       post: {
-        path: "src/notes/{yyyy}/note-{t}.md",
-        url: "{yyyy}/{MM}/{dd}/note-{t}"
+        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
+        url: "{yyyy}/{MM}/{dd}/{slug}.html"
       },
       media: {
         path: "src/media/{yyyy}-{MM}/{originalname}",
