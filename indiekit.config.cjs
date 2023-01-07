@@ -22,7 +22,7 @@ module.exports = {
       type: "article",
       name: "Writing",
       post: {
-        path: "src/writing/{yyyy}/{yyyy}-{MM}-{dd}/{slug}.md",
+        path: "src/writing/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
         url: "{yyyy}/{MM}/{dd}/{slug}"
       },
       media: {

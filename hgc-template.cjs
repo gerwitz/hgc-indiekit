@@ -16,10 +16,13 @@ module.exports = function(properties){
   metadata = {
     date: properties.published,
     ...(properties.title && { title: properties.title }),
+    ...(properties.slug && { slug: properties.slug }),
     ...(properties.category && { categories: [properties.category] }), // pluralized
     ...(properties.location && { location: properties.location }),
+    ...(properties.syndication && { syndication: properties.syndication }),
+    ...(properties["mp-syndicate-to"] && { "mp-syndicate-to": properties["mp-syndicate-to"] }),
     ...(properties.postStatus === "draft" && { draft: true }),
-  };
+};
 
   let frontMatter = YAML.stringify(metadata, { lineWidth: 0 });
   frontMatter = `---\n${frontMatter}---\n`;
