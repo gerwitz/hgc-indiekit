@@ -15,6 +15,7 @@ module.exports = function(properties){
 
   metadata = {
     date: properties.published,
+    ...(properties.updated && { updated: properties.updated }),
     ...(properties.title && { title: properties.title }),
     ...(properties.slug && { slug: properties.slug }),
     ...(properties.category && { categories: [properties.category] }), // pluralized
