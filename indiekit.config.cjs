@@ -63,6 +63,7 @@ module.exports = {
     forced: true,
     url: "https://social.gerwitz.com",
     user: "hans",
-    accessToken: process.env.MASTODON_ACCESS_TOKEN
+    accessToken: process.env.MASTODON_ACCESS_TOKEN,
+    characterLimit: 5000
   },
 };
