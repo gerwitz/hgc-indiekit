@@ -5,6 +5,7 @@ module.exports = {
   application: {
     name: "indiekit.gerwitz.com",
     url: "https://indiekit.gerwitz.com",
+    timeZone: "Europe/Amsterdam",
     mongodbUrl: process.env.MONGO_URL,
     themeColor: "#00852B",
   },
