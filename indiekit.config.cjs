@@ -27,26 +27,26 @@ module.exports = {
         url: "{yyyy}/{MM}/{dd}/{slug}"
       },
       media: {
-        path: "src/media/{yyyy}-{MM}-{dd}-{slug}/{originalname}",
-        url: "media/{yyyy}-{MM}-{dd}-{slug}/{originalname}"
+        path: "src/media/{yyyy}-{MM}-{dd}-{slug}/{filename}",
+        url: "media/{yyyy}-{MM}-{dd}-{slug}/{filename}"
       }
     }, {
       type: "note",
       name: "Note",
       post: {
-        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
+        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{n}.md",
         url: "{yyyy}/{MM}/{dd}/{slug}.html"
       }
     }, {
       type: "photo",
       name: "Photo Note",
       post: {
-        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
+        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{n}.md",
         url: "{yyyy}/{MM}/{dd}/{slug}.html"
       },
       media: {
-        path: "src/media/{yyyy}-{MM}/{originalname}",
-        url: "media/{yyyy}-{MM}/{originalname}"
+        path: "src/media/{yyyy}-{MM}/{filename}",
+        url: "media/{yyyy}-{MM}/{filename}"
       }
     }],
     slugSeparator: "-",
