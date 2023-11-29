@@ -62,7 +62,7 @@ module.exports = {
   "@indiekit/syndicator-mastodon": {
     checked: true,
     forced: true,
-    url: "https://social.gerwitz.com",
+    url: "https://fedi.gerwitz.com",
     user: "hans",
     accessToken: process.env.MASTODON_ACCESS_TOKEN,
     characterLimit: 5000
