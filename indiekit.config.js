@@ -1,7 +1,8 @@
-const hgcTemplate = require('./hgc-template.cjs');
-const dotEnv = require('dotenv');
+const hgcTemplate = require('./hgc-template.js');
 
-module.exports = {
+import process from "node:process";
+
+export default {
   application: {
     name: "indiekit.gerwitz.com",
     url: "https://indiekit.gerwitz.com",
