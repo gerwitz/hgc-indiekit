@@ -20,5 +20,7 @@
     "@indiekit/frontend": "^1.0.0-beta.15",
     "@indiekit/store-github": "^1.0.0-beta.15",
     "@indiekit/syndicator-mastodon": "^1.0.0-beta.16"
-  }
+  },
+  "type": "module",
+  "private": true
 }
