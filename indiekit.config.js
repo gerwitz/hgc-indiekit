@@ -1,5 +1,3 @@
-const hgcTemplate = require('./hgc-template.js');
-
 import process from "node:process";
 
 export default {
