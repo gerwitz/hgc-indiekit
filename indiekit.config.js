@@ -19,7 +19,7 @@ export default {
     timeZone: "Europe/Amsterdam",
     categories: ["personal", "culture", "work"],
     postTypes: {
-      article:
+      article: {
         name: "Writing",
         post: {
           path: "src/writing/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
@@ -28,25 +28,16 @@ export default {
         media: {
           path: "src/media/{yyyy}-{MM}-{dd}-{slug}/{filename}",
           url: "media/{yyyy}-{MM}-{dd}-{slug}/{filename}"
-        },
-    note:
-      name: "Note",
-      post: {
-        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{n}.md",
-        url: "{yyyy}/{MM}/{dd}/{slug}.html"
-      }
-    }, {
-      type: "photo",
-      name: "Photo Note",
-      post: {
-        path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{n}.md",
-        url: "{yyyy}/{MM}/{dd}/{slug}.html"
+        }
       },
-      media: {
-        path: "src/media/{yyyy}-{MM}/{filename}",
-        url: "media/{yyyy}-{MM}/{filename}"
+      note: {
+        name: "Note",
+        post: {
+          path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{n}.md",
+          url: "{yyyy}/{MM}/{dd}/{slug}.html"
+        }
       }
-    }],
+    },
     slugSeparator: "-"
   },
   "@indiekit/post-type-article": {
