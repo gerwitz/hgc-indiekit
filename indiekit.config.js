@@ -18,19 +18,18 @@ export default {
     locale: "en-US",
     timeZone: "Europe/Amsterdam",
     categories: ["personal", "culture", "work"],
-    postTypes: [{
-      type: "article",
-      name: "Writing",
-      post: {
-        path: "src/writing/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
-        url: "{yyyy}/{MM}/{dd}/{slug}"
-      },
-      media: {
-        path: "src/media/{yyyy}-{MM}-{dd}-{slug}/{filename}",
-        url: "media/{yyyy}-{MM}-{dd}-{slug}/{filename}"
-      }
-    }, {
-      type: "note",
+    postTypes: {
+      article:
+        name: "Writing",
+        post: {
+          path: "src/writing/{yyyy}/{yyyy}-{MM}-{dd}-{slug}.md",
+          url: "{yyyy}/{MM}/{dd}/{slug}"
+        },
+        media: {
+          path: "src/media/{yyyy}-{MM}-{dd}-{slug}/{filename}",
+          url: "media/{yyyy}-{MM}-{dd}-{slug}/{filename}"
+        },
+    note:
       name: "Note",
       post: {
         path: "src/notes/{yyyy}/{yyyy}-{MM}-{dd}-{n}.md",
@@ -48,22 +47,32 @@ export default {
         url: "media/{yyyy}-{MM}/{filename}"
       }
     }],
-    slugSeparator: "-",
-    postTemplate: hgcTemplate,
+    slugSeparator: "-"
   },
-
+  "@indiekit/post-type-article": {
+    fields: {
+      name: { required: true },
+      content: { required: true },
+      summary: {},
+      category: {},
+      tags: {},
+      location: {},
+      published: { required: true },
+      visibility: {},
+    },
+  },
   "@indiekit/store-github": {
     user: "gerwitz",
     repo: "hgc-v12",
     branch: "main",
-    token: process.env.GITHUB_TOKEN
+    // token: process.env.GITHUB_TOKEN
   },
   "@indiekit/syndicator-mastodon": {
     checked: true,
     forced: true,
     url: "https://fedi.gerwitz.com",
     user: "hans",
-    accessToken: process.env.MASTODON_ACCESS_TOKEN,
+    // accessToken: process.env.MASTODON_ACCESS_TOKEN,
     characterLimit: 5000
   },
 };
