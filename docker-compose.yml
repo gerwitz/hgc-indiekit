@@ -10,19 +10,6 @@ services:
     environment:
       - GITHUB_TOKEN
       - MASTODON_ACCESS_TOKEN
-      - MONGO_URL=mongodb://$MONGO_INITDB_ROOT_USERNAME:$MONGO_INITDB_ROOT_PASSWORD@mongo
+      - MONGO_URL
       - PASSWORD_SECRET
       - SECRET
-  mongo:
-    container_name: mongo
-    image: mongo:4
-    restart: always
-    volumes:
-      - mongo:/data/db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD
-
-volumes:
-  mongo:
-    external: true
