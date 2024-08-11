@@ -4,6 +4,7 @@ export default {
   application: {
     name: "indiekit.gerwitz.com",
     url: "https://indiekit.gerwitz.com",
+    port: 3001,
     timeZone: "Europe/Amsterdam",
     mongodbUrl: process.env.MONGO_URL,
     themeColor: "#00852B",

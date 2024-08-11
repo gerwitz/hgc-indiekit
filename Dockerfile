@@ -18,7 +18,7 @@ RUN npm i --omit=dev --package-lock=false
 COPY . .
 
 # Expose port
-EXPOSE 3000
+EXPOSE 3001
 
 # Start the server by default, this can be overwritten at runtime
 CMD [ "npx", "indiekit", "serve" ]
