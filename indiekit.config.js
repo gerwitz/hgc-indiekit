@@ -12,6 +12,7 @@ export default {
   plugins: [
     "@indiekit/store-github",
     "@indiekit/syndicator-mastodon",
+    "@indiekit/preset-eleventy",
   ],
   publication: {
     me: "https://hans.gerwitz.com",
