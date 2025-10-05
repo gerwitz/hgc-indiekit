@@ -61,8 +61,7 @@ export default {
     // token: process.env.GITHUB_TOKEN
   },
   "@indiekit/syndicator-mastodon": {
-    checked: true,
-    forced: true,
+    checked: false,
     url: "https://fedi.gerwitz.com",
     user: "hans",
     // accessToken: process.env.MASTODON_ACCESS_TOKEN,
@@ -71,5 +70,6 @@ export default {
   "@indiekit/syndicator-bluesky": {
     checked: true,
     handle: "gerwitz.com"
+    // password: process.env.BLUESKY_PASSWORD,
   }
 };
