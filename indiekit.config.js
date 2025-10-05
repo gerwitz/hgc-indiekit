@@ -11,6 +11,7 @@ export default {
   },
   plugins: [
     "@indiekit/store-github",
+    "@indiekit/syndicator-bluesky",
     "@indiekit/syndicator-mastodon",
     "@indiekit/preset-eleventy",
   ],
