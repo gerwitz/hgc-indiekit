@@ -68,4 +68,8 @@ export default {
     // accessToken: process.env.MASTODON_ACCESS_TOKEN,
     characterLimit: 5000
   },
+  "@indiekit/syndicator-bluesky": {
+    checked: true,
+    handle: "gerwitz.com"
+  }
 };
