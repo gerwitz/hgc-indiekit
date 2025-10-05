@@ -8,18 +8,19 @@
     "url": "git+https://github.com/gerwitz/hgc-indiekit.git"
   },
   "engines": {
-    "node": "^21"
+    "node": "^24"
   },
   "main": "index.config.js",
   "scripts": {
     "start": "indiekit serve"
   },
   "dependencies": {
+    "@indiekit/indiekit": "^1.0.0-beta.24",
     "@indiekit/frontend": "^1.0.0-beta",
-    "@indiekit/indiekit": "^1.0.0-beta",
     "@indiekit/preset-eleventy": "^1.0.0-beta",
     "@indiekit/store-github": "^1.0.0-beta",
-    "@indiekit/syndicator-mastodon": "^1.0.0-beta"
+    "@indiekit/syndicator-mastodon": "^1.0.0-beta",
+    "@indiekit/syndicator-bluesky": "^1.0.0-beta"
   },
   "type": "module"
 }
