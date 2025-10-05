@@ -6,6 +6,7 @@ Using Docker Compose to bring a MongoDB container along for the ride
 Environment variables expected:
 - GITHUB_TOKEN
 - MASTODON_ACCESS_TOKEN
+- BLUESKY_PASSWORD
 - MONGO_INITDB_ROOT_USERNAME
 - MONGO_INITDB_ROOT_PASSWORD
 - PASSWORD_SECRET
