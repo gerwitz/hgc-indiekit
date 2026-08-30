@@ -63,8 +63,8 @@ export default {
   },
   "@indiekit/syndicator-mastodon": {
     checked: false,
-    url: "https://fedi.gerwitz.com",
-    user: "hans",
+    url: "https://chaos.social",
+    user: "gerwitz",
     // accessToken: process.env.MASTODON_ACCESS_TOKEN,
     characterLimit: 5000
   },
