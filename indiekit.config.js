@@ -1,4 +1,5 @@
 import process from "node:process";
+import { getPostTemplate } from "@indiekit/preset-eleventy/lib/post-template.js";
 
 export default {
   application: {
@@ -17,6 +18,12 @@ export default {
   ],
   publication: {
     me: "https://hans.gerwitz.com",
+    postTemplate: (properties) =>
+      getPostTemplate(
+        properties.type === "article"
+          ? { ...properties, draft: true }
+          : properties,
+      ),
     authorizationEndpoint: "https://indieauth.com/auth",
     locale: "en-US",
     timeZone: "Europe/Amsterdam",
