@@ -1,4 +1,5 @@
 import process from "node:process";
+import { fileURLToPath } from "node:url";
 import { getPostTemplate } from "@indiekit/preset-eleventy/lib/post-template.js";
 
 export default {
@@ -15,6 +16,7 @@ export default {
     "@indiekit/syndicator-bluesky",
     "@indiekit/syndicator-mastodon",
     "@indiekit/preset-eleventy",
+    fileURLToPath(new URL("./plugins/gempost/index.js", import.meta.url)),
   ],
   publication: {
     me: "https://hans.gerwitz.com",
@@ -38,6 +40,13 @@ export default {
         media: {
           path: "src/media/{yyyy}-{MM}-{dd}-{slug}/{filename}",
           url: "media/{yyyy}-{MM}-{dd}-{slug}/{filename}"
+        }
+      },
+      gempost: {
+        name: "Gempost",
+        post: {
+          path: "src/gemposts/{yyyy}-{MM}-{dd}-{slug}.md",
+          url: "gemini://hans.gerwitz.com/posts/{yyyy}-{MM}-{dd}-{slug}.gmi"
         }
       },
       note: {
