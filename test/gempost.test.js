@@ -74,7 +74,7 @@ test("gempost creates dated Markdown with a canonical Gemini URL", async () =>
 {
   const data = await postData.create(application, publication, { ...properties });
   assert.equal(data.path, "src/gemposts/2026-10-03-a-capsule-post.md");
-  assert.equal(data.properties.url, "gemini://hans.gerwitz.com/posts/2026-10-03-a-capsule-post.gmi");
+  assert.equal(data.properties.url, "gemini://hans.gerwitz.com/gemlog/2026-10-03-a-capsule-post.gmi");
   assert.equal(data.properties["post-type"], "gempost");
 
   const markdown = publication.postTemplate(getPostTemplateProperties(data.properties));

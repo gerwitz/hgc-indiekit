@@ -46,7 +46,7 @@ export default {
         name: "Gempost",
         post: {
           path: "src/gemposts/{yyyy}-{MM}-{dd}-{slug}.md",
-          url: "gemini://hans.gerwitz.com/posts/{yyyy}-{MM}-{dd}-{slug}.gmi"
+          url: "gemini://hans.gerwitz.com/gemlog/{yyyy}-{MM}-{dd}-{slug}.gmi"
         }
       },
       note: {

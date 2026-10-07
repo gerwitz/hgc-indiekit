@@ -7,7 +7,7 @@ Using Docker Compose to bring a MongoDB container along for the ride
 
 The local Gempost post type creates titled Markdown posts in
 `src/gemposts/YYYY-MM-DD-slug.md`, published only in Gemini at
-`gemini://hans.gerwitz.com/posts/YYYY-MM-DD-slug.gmi`.
+`gemini://hans.gerwitz.com/gemlog/YYYY-MM-DD-slug.gmi`.
 
 Choose **Gempost** in Indiekit's new-post interface. Third-party Micropub clients
 can create a gempost by sending `mp-gempost=true` alongside `name` and `content`.
