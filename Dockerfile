@@ -1,6 +1,8 @@
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=24.9.0
+# Keep NODE_VERSION on the supported Node 24 release line, at least 24.17.0.
+ARG NODE_VERSION=24.17.0
 FROM node:${NODE_VERSION}-alpine
+
+RUN node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major !== 24 || minor < 17) { throw new Error("Indiekit requires Node 24.17.0 or newer within Node 24.x"); }'
 
 # Create app directory
 WORKDIR /usr/src/app
