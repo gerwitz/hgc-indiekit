@@ -9,13 +9,13 @@
  * - The first line of your Draft should be a top-level headline, which will
  *   be used as the title ("name" property) for the post.
  *
- * I find it easiest to steal an access token 
+ * I find it easiest to steal an access token
  * from https://quill.p3k.io/settings
  */
 
 // Get IndieAuth Token and Micropub Endpoint on first run
 var credential = Credential.create(
-    "Micropub", 
+    "Micropub",
     "Insert IndieAuth token and Micropub endpoint."
 )
 
@@ -33,6 +33,8 @@ var post_title = "";
 if (array_of_content[0].charAt(0) == "#") {
     post_title += array_of_content[0].slice(2);
     array_of_content.shift();
+} else {
+  context.fail("Gemposts need titles");
 }
 
 // Collect the rest of the content
