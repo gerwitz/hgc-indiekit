@@ -42,6 +42,7 @@ const properties = {
 };
 
 const getFrontMatter = (markdown) => YAML.parse(markdown.split("---\n")[1]);
+const getBody = (markdown) => markdown.match(/^---\n[\s\S]*?\n---\n([\s\S]*)$/)[1];
 
 test("gempost registers required fields and preserves ordinary post discovery", () =>
 {
@@ -94,4 +95,60 @@ test("gempost respects drafts while Writing remains automatically drafted", asyn
 
   const writing = publication.postTemplate({ type: "article", name: "Writing", content: "Body" });
   assert.equal(getFrontMatter(writing).draft, true);
+});
+
+test("Markdown articles omit an opening heading only when it matches the title", () =>
+{
+  for (const content of ["# Writing\n\nBody.", "\n\n  # Writing ###\r\n\r\nBody.", "# Writing\nBody."])
+  {
+    const markdown = publication.postTemplate({ type: "article", name: "Writing", content });
+    assert.equal(getFrontMatter(markdown).title, "Writing");
+    assert.equal(getFrontMatter(markdown).draft, true);
+    assert.equal(getBody(markdown), "\nBody.\n");
+  }
+
+  const empty = publication.postTemplate({ type: "article", name: "Writing", content: { text: "# Writing", html: "<h1>Writing</h1>" } });
+  assert.equal(getBody(empty), "\n");
+});
+
+test("real Micropub article discovery and normalized Markdown retain their title without duplicate content", async () =>
+{
+  const data = await postData.create(application, publication, {
+    type: "entry", name: "Writing", content: "# Writing\n\n    indented code\n\nNext paragraph.",
+    published: properties.published,
+  });
+  const before = structuredClone(data.properties);
+  assert.equal(data.properties["post-type"], "article");
+  const markdown = publication.postTemplate(getPostTemplateProperties(data.properties));
+  assert.equal(getFrontMatter(markdown).title, "Writing");
+  assert.equal(getBody(markdown), "\n    indented code\n\nNext paragraph.\n");
+  assert.deepEqual(data.properties, before);
+
+  const gempost = await postData.create(application, publication, { ...properties, content: "# A capsule post\n\nBody." });
+  assert.equal(getBody(publication.postTemplate(getPostTemplateProperties(gempost.properties))), "\n# A capsule post\n\nBody.\n");
+});
+
+test("different headings, code, HTML, notes, and gemposts keep their opening content", () =>
+{
+  for (const content of ["# A different heading\n\nBody.", "## Writing\n\nBody.", "#Writing\n\nBody.", "    # Writing\n\nBody.", "```md\n# Writing\n```", "<h1>Writing</h1>\n<p>Body.</p>"])
+  {
+    assert.equal(getBody(publication.postTemplate({ type: "article", name: "Writing", content })), `\n${content}\n`);
+  }
+
+  const html = "<h1>Writing</h1>\n<p>Body.</p>";
+  assert.equal(getBody(publication.postTemplate({ type: "article", name: "Writing", content: { html } })), `\n${html}\n`);
+
+  for (const type of ["note", "gempost"])
+  {
+    assert.equal(getBody(publication.postTemplate({ type, name: "Writing", content: "# Writing\n\nBody." })), "\n# Writing\n\nBody.\n");
+  }
+});
+
+test("every saved body has one empty line after front matter without losing indentation", () =>
+{
+  for (const type of ["article", "note", "gempost"])
+  {
+    const markdown = publication.postTemplate({ type, name: "Writing", content: "\r\n \t\r\n    code\n\nNext." });
+    assert.equal(getBody(markdown), "\n    code\n\nNext.\n");
+  }
 });

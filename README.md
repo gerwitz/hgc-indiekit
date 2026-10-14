@@ -3,6 +3,16 @@ Configuration for [IndieKit](https://getindiekit.com/)
 Following the sample at https://github.com/getindiekit/example-config/
 Using Docker Compose to bring a MongoDB container along for the ride
 
+## Article formatting
+
+When saving an article, a leading Markdown `#` heading is omitted from the body
+only if it matches the Micropub title. The front-matter title is retained. This
+uses Indiekit's Markdown text representation; HTML tags are not processed, and
+note and gempost headings are preserved.
+
+Saved files have one blank line after the closing front-matter delimiter. Body
+indentation and spacing between paragraphs are preserved.
+
 ## Gemposts
 
 The local Gempost post type creates titled Markdown posts in

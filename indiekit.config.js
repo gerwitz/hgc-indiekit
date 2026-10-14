@@ -1,6 +1,33 @@
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { getPostType } from "@indiekit/endpoint-micropub/lib/post-type-discovery.js";
 import { getPostTemplate } from "@indiekit/preset-eleventy/lib/post-template.js";
+
+const stripDuplicateArticleHeading = (properties) =>
+{
+  const { content, name, type, url } = properties;
+  const markdown = typeof content === "string" ? content : content?.text;
+
+  if (typeof markdown !== "string" || typeof name !== "string" || !name.trim())
+  {
+    return content;
+  }
+
+  // Micropub removes post-type metadata before this hook; capsule URLs distinguish gemposts.
+  const isArticle = type === "article"
+    || (type === "entry" && !url?.startsWith("gemini:") && getPostType({}, properties) === "article");
+
+  if (!isArticle)
+  {
+    return content;
+  }
+
+  // Inspect Markdown only; a different heading or an HTML heading is intentional content.
+  const heading = markdown.match(/^(?:[ \t]*\r?\n)* {0,3}#[ \t]+([^\r\n]*)(?:\r?\n|$)/);
+  const headingTitle = heading?.[1].replace(/[ \t]+#+[ \t]*$/, "").trim();
+
+  return headingTitle === name.trim() ? markdown.slice(heading[0].length) : content;
+};
 
 export default {
   application: {
@@ -21,11 +48,16 @@ export default {
   publication: {
     me: "https://hans.gerwitz.com",
     postTemplate: (properties) =>
-      getPostTemplate(
-        properties.type === "article"
-          ? { ...properties, draft: true }
-          : properties,
-      ),
+    {
+      const templateProperties = {
+        ...properties,
+        ...(properties.type === "article" && { draft: true }),
+        content: stripDuplicateArticleHeading(properties),
+      };
+
+      // Keep one empty line after front matter, including when stripping leaves no body.
+      return getPostTemplate(templateProperties).replace(/(\n---\n)(?:[ \t]*\r?\n)*/, "$1\n");
+    },
     authorizationEndpoint: "https://indieauth.com/auth",
     locale: "en-US",
     timeZone: "Europe/Amsterdam",
